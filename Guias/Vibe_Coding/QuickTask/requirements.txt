@@ -1,0 +1,19 @@
+# 📦 QuickTask - Dependencias del proyecto
+
+# Framework web
+fastapi==0.109.0
+uvicorn[standard]==0.27.0
+
+# Base de datos y ORM
+sqlalchemy==2.0.25
+
+# Validación de datos (incluido con FastAPI pero especificado por claridad)
+pydantic==2.5.3
+
+# Testing
+pytest==7.4.4
+pytest-cov==4.1.0
+httpx==0.26.0
+
+# Herramientas de desarrollo (opcionales)
+python-dotenv==1.0.0

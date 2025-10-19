@@ -1,0 +1,22 @@
+# Docker
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+*.so
+*.egg
+*.egg-info
+dist/
+build/
+*.db
+*.sqlite
+.pytest_cache/
+.coverage
+htmlcov/
+.git/
+.gitignore
+README.md
+.env
+.vscode/
+.idea/
