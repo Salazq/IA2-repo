@@ -1,0 +1,32 @@
+# 🐳 Docker Compose para QuickTask
+# Orquestación de contenedores para desarrollo y producción
+
+version: '3.8'
+
+services:
+  quicktask-api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: quicktask_api
+    ports:
+      - "8000:8000"
+    volumes:
+      # Montar el código para desarrollo con hot-reload
+      - ./app:/app/app
+      # Persistencia de la base de datos SQLite
+      - quicktask-data:/app/data
+    environment:
+      - PYTHONUNBUFFERED=1
+    command: uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+volumes:
+  quicktask-data:
+    driver: local
